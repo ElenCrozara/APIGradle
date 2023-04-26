@@ -7,13 +7,18 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+//    testImplementation platform('org.junit:junit-bom:4.+')
+    testImplementation 'junit:junit:4.+'
+    testImplementation 'io.rest-assured:rest-assured:4.+'
+
 }
 
-test {
-    useJUnitPlatform()
-}
+//test {
+//    useJUnitPlatform()
+//}
+
+task teste(type:Test) {}
