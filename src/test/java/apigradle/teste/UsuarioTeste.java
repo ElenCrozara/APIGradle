@@ -1,5 +1,6 @@
 package apigradle.teste;
 
+import apigradle.dominio.Usuario;
 import org.hamcrest.Matchers;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -35,13 +36,11 @@ public class UsuarioTeste {
     }
     @Test
     public void testeCriarUsuarioComSucesso() {
+        Usuario usuario = new Usuario("Rafael", "eng test");
         given().
                log().all().
                contentType(ContentType.JSON).
-               body("{\n" +
-                       "    \"name\": \"Rafael\",\n" +
-                       "    \"job\": \"eng test\"\n" +
-                       "}").
+               body(usuario).
         when().
                 post("https://reqres.in/api/users").
         then().

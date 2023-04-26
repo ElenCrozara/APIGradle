@@ -12,9 +12,9 @@ repositories {
 }
 
 dependencies {
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
     testImplementation 'junit:junit:4.+'
     testImplementation 'io.rest-assured:rest-assured:4.+'
-
 }
 
-//task teste(type:Test) {}
+task teste(type:Test) {}
