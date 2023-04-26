@@ -1,32 +1,37 @@
-package apigradle;
+package apigradle.teste;
 
-import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.when;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.junit.BeforeClass;
+import org.junit.runners.MethodSorters;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-public class AppTest {
+@FixMethodOrder(MethodSorters.JVM)
+public class UsuarioTeste {
 
     @BeforeClass
     public static void setup() {
-//        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+        baseURI = "https://reqres.in";
+        basePath = "/api";
     }
     @Test
     public void testeListaMetadadosDousuario() {
+        given().
+                log().all().
+                params("page","2").
         when().
-                get("https://reqres.in/api/users?page=2").
+                get("/users").
         then().
                 statusCode(HttpStatus.SC_OK).
-                log().all().
                 body("page", Matchers.is(2)).
                 body("data", is(notNullValue()));
+        System.out.println("first");
     }
     @Test
     public void testeCriarUsuarioComSucesso() {
@@ -44,5 +49,6 @@ public class AppTest {
                 statusCode(HttpStatus.SC_CREATED).
                 body("name", is(("Rafael"))).
                 body("job", is("eng test"));
+        System.out.println("second");
     }
 }
