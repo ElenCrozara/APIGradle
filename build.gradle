@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'org.example'
@@ -11,14 +12,9 @@ repositories {
 }
 
 dependencies {
-//    testImplementation platform('org.junit:junit-bom:4.+')
     testImplementation 'junit:junit:4.+'
     testImplementation 'io.rest-assured:rest-assured:4.+'
 
 }
 
-//test {
-//    useJUnitPlatform()
-//}
-
-task teste(type:Test) {}
+//task teste(type:Test) {}
