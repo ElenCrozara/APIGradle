@@ -13,7 +13,7 @@ import org.junit.runners.MethodSorters;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-@FixMethodOrder(MethodSorters.JVM)
+
 public class UsuarioTeste {
 
     @BeforeClass
@@ -29,25 +29,26 @@ public class UsuarioTeste {
         when().
                 get("/users").
         then().
+
                 statusCode(HttpStatus.SC_OK).
                 body("page", Matchers.is(2)).
                 body("data", is(notNullValue()));
-        System.out.println("first");
+
     }
     @Test
     public void testeCriarUsuarioComSucesso() {
-        Usuario usuario = new Usuario("Rafael", "eng test");
+        Usuario usuario = new Usuario("Rafael", "eng test", "sydney@fife");
         given().
                log().all().
                contentType(ContentType.JSON).
                body(usuario).
         when().
-                post("https://reqres.in/api/users").
+                post("/users").
         then().
                 log().all().
                 statusCode(HttpStatus.SC_CREATED).
                 body("name", is(("Rafael"))).
                 body("job", is("eng test"));
-        System.out.println("second");
+
     }
 }
