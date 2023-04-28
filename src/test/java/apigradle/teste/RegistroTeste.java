@@ -3,22 +3,14 @@ package apigradle.teste;
 import apigradle.dominio.Usuario;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 
-public class RegistroTeste {
+public class RegistroTeste extends BaseTeste{
 
-    @BeforeClass
-    public static void setup() {
-        baseURI = "https://reqres.in";
-        basePath = "/api";
-    }
     @Test
     public void testNãoEfetuaRegistroQuandoSenhaEstaFaltando() {
         Usuario usuario = new Usuario() ;

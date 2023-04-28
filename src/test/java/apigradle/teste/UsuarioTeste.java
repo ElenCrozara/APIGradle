@@ -1,26 +1,18 @@
 package apigradle.teste;
 
 import apigradle.dominio.Usuario;
-import org.hamcrest.Matchers;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
-import org.junit.BeforeClass;
-import org.junit.runners.MethodSorters;
+import org.hamcrest.Matchers;
+import org.junit.Test;
 
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
 
-public class UsuarioTeste {
+public class UsuarioTeste extends BaseTeste{
 
-    @BeforeClass
-    public static void setup() {
-        baseURI = "https://reqres.in";
-        basePath = "/api";
-    }
     @Test
     public void testeListaMetadadosDousuario() {
         given().
@@ -29,11 +21,9 @@ public class UsuarioTeste {
         when().
                 get("/users").
         then().
-
                 statusCode(HttpStatus.SC_OK).
                 body("page", Matchers.is(2)).
                 body("data", is(notNullValue()));
-
     }
     @Test
     public void testeCriarUsuarioComSucesso() {
@@ -49,6 +39,5 @@ public class UsuarioTeste {
                 statusCode(HttpStatus.SC_CREATED).
                 body("name", is(("Rafael"))).
                 body("job", is("eng test"));
-
     }
 }

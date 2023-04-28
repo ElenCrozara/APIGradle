@@ -8,22 +8,21 @@ public class Usuario {
     private String job;
     private String email;
 
-    public Usuario() {}
 
-    public Usuario(String name, String job, String email) {
+    public Usuario() {} // construtor simples sem parametro
+
+
+    public Usuario(String name, String job, String email) { // construtor passando parametros
         this.name = name;
         this.job = job;
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;} // gets construidos para tornar o atributo publico porque o restassured reclamou do tipo private
     public String getJob() {
         return job;
     }
-
     public String getEmail() { return email; }
 
-    public void setEmail(String email) {  this.email = email;}
+    public void setEmail(String email) {  this.email = email;} // setEmail construido para passar apenas um valor no parametro do construtor simples
 }
