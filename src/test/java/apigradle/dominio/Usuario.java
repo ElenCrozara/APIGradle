@@ -4,7 +4,7 @@ package apigradle.dominio;
 
 public class Usuario {
 
-    private String name;
+    private String name; // é necessário criar primeiro atributos privados para depois com o get transformar em publico (usual do java)
     private String job;
     private String email;
 
@@ -24,5 +24,5 @@ public class Usuario {
     }
     public String getEmail() { return email; }
 
-    public void setEmail(String email) {  this.email = email;} // setEmail construido para passar apenas um valor no parametro do construtor simples
+    public void setEmail(String email) {  this.email = email;} // setEmail construido para passar apenas um valor no parametro do construtor simples e não retornar nada, por isso é void
 }
