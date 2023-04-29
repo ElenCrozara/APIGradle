@@ -11,6 +11,8 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class RegistroTeste extends BaseTeste{
 
+    private static final String REGISTRA_USUARIO_ENDPOINT = "/register";
+
     @Test
     public void testNãoEfetuaRegistroQuandoSenhaEstaFaltando() {
         Usuario usuario = new Usuario() ;
@@ -20,7 +22,7 @@ public class RegistroTeste extends BaseTeste{
                 body(usuario).
                 log().all().
         when().
-                post("/register").
+                post(REGISTRA_USUARIO_ENDPOINT).
         then().
                 log().all().
                 statusCode(HttpStatus.SC_BAD_REQUEST).

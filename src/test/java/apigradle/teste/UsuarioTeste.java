@@ -13,13 +13,16 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class UsuarioTeste extends BaseTeste{
 
+    private static final String LISTA_USUARIOS_ENDPOINT = "/users"; // variaveis de endpoint que são passados no metodo
+    private static final String CRIAR_USUARIO_ENDPOINT = "/user";
+
     @Test
     public void testeListaMetadadosDousuario() {
         given().
                 log().all().
                 params("page","2").
         when().
-                get("/users").
+                get(LISTA_USUARIOS_ENDPOINT).
         then().
                 statusCode(HttpStatus.SC_OK).
                 body("page", Matchers.is(2)).
@@ -32,7 +35,7 @@ public class UsuarioTeste extends BaseTeste{
                log().all().
                body(usuario).
         when().
-                post("/users").
+                post(CRIAR_USUARIO_ENDPOINT).
         then().
                 log().all().
                 statusCode(HttpStatus.SC_CREATED).
