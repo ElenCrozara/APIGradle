@@ -1,7 +1,6 @@
 package apigradle.teste;
 
 import apigradle.dominio.Usuario;
-import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -11,13 +10,13 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
 
-public class UsuarioTeste extends BaseTeste{
+public class TesteUsuario extends TesteBase {
 
     private static final String LISTA_USUARIOS_ENDPOINT = "/users"; // variaveis de endpoint que são passados no metodo
     private static final String CRIAR_USUARIO_ENDPOINT = "/user";
 
     @Test
-    public void testeListaMetadadosDousuario() {
+    public void testeMostraPaginaEspecifica() {
         given().
                 log().all().
                 params("page","2").
@@ -29,7 +28,7 @@ public class UsuarioTeste extends BaseTeste{
                 body("data", is(notNullValue()));
     }
     @Test
-    public void testeCriarUsuarioComSucesso() {
+    public void testeCriaUsuarioComSucesso() {
         Usuario usuario = new Usuario("Rafael", "eng test", "sydney@fife");
         given().
                log().all().
