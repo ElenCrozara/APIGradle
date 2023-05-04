@@ -41,4 +41,19 @@ public class TesteUsuario extends TesteBase {
                 body("name", is(("Rafael"))).
                 body("job", is("eng test"));
     }
+    @Test
+    public void testeTamanhoDosItensMostradosIgualaoPerPage() {
+        given().
+                log().all().
+                params("page", "2").
+                when().
+                get(LISTA_USUARIOS_ENDPOINT).
+                then().
+                statusCode(HttpStatus.SC_OK).
+                body(
+                "page",is(2),
+                "data.size()", is(6),
+                "data.findAll { it.avatar.startsWith('https://s3.amazonaws.com') }.size()", is(0)
+                );
+    }
 }
